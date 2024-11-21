@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+import ContactCTA from '../components/ContactCTA.astro';
+import Hero from '../components/Hero.astro';
+---
+
+<BaseLayout title="About | Mehmet Alkaya" description="About Mehmet Alkaya Lorem Ipsum">
+	<div class="stack gap-20">
+		<main class="wrapper about">
+			<Hero
+				title=" À propos de moi"
+				tagline="Merci de votre visite. Lisez ci-dessous pour en savoir plus sur moi et mon parcours."
+			>
+				<img
+					width="1553"
+					height="873"
+					src="/assets/aaa.png"
+					alt="Mehmet Alkaya at work with a colleague"
+				/>
+			</Hero>
+
+			<section>
+				<h2 class="section-title">Présentation de Mehmet</h2>
+				<div class="content">
+					<p>
+						Actuellement étudiant en deuxième année à Epitech Digital School, je suis passionné par le monde de la technologie et du développement numérique. Mon parcours à Epitech m’a permis d’acquérir des compétences solides en programmation et en ingénierie logicielle, tout en explorant divers aspects du digital.
+					</p>
+						Au cours de ma formation, j'ai eu l'opportunité de travailler sur plusieurs projets innovants, notamment en langage C, où j'ai développé des applications et des jeux qui m'ont permis de comprendre les fondamentaux de la programmation et de renforcer ma créativité. Ces projets, tels que la création d’un mini-shell et d’un jeu de bataille navale, m'ont appris à collaborer efficacement au sein d'équipes et à relever des défis techniques.
+					</p>
+					<p>
+						Ma passion pour le développement ne se limite pas à la programmation. Je m'intéresse également à des domaines comme l’intelligence artificielle, la cybersécurité et le design d’interface utilisateur, car je crois que ces compétences sont essentielles pour devenir un expert polyvalent dans le secteur technologique. Grâce à Epitech, j'ai pu participer à des ateliers pratiques, des hackathons et des projets collaboratifs qui m'ont permis d'appliquer mes connaissances dans des situations réelles.
+
+En dehors des études, je suis toujours à la recherche de nouvelles opportunités pour apprendre et grandir. Que ce soit à travers des stages, des projets personnels ou des contributions à des communautés tech, je suis motivé par l'idée de toujours me perfectionner. Je crois fermement en l'importance de l’entraide et du partage des connaissances, et je m’efforce de soutenir mes camarades dans leur apprentissage.
+
+En résumé, mon expérience à Epitech Digital School est un véritable tremplin vers une carrière réussie dans le domaine de la technologie. Je suis impatient de continuer à développer mes compétences, d'explorer de nouveaux horizons et de contribuer à des projets qui auront un impact positif dans le monde numérique.
+
+
+					</p>
+				</div>
+			</section>
+
+		</main>
+
+		<ContactCTA />
+	</div>
+</BaseLayout>
+
+<style>
+	.about {
+		display: flex;
+		flex-direction: column;
+		gap: 3.5rem;
+	}
+
+	img {
+		margin-top: 1.5rem;
+		border-radius: 1.5rem;
+		box-shadow: var(--shadow-md);
+	}
+
+	section {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		color: var(--gray-200);
+	}
+
+	.section-title {
+		grid-column-start: 1;
+		font-size: var(--text-xl);
+		color: var(--gray-0);
+	}
+
+	.content {
+		grid-column: 2 / 4;
+	}
+
+	.content :global(a) {
+		text-decoration: 1px solid underline transparent;
+		text-underline-offset: 0.25em;
+		transition: text-decoration-color var(--theme-transition);
+	}
+
+	.content :global(a:hover),
+	.content :global(a:focus) {
+		text-decoration-color: currentColor;
+	}
+
+	@media (min-width: 50em) {
+		.about {
+			display: grid;
+			grid-template-columns: 1fr 60% 1fr;
+		}
+
+		.about > :global(:first-child) {
+			grid-column-start: 2;
+		}
+
+		section {
+			display: contents;
+			font-size: var(--text-lg);
+		}
+	}
+</style>
