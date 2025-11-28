@@ -838,9 +838,9 @@ import Icon from './Icon.astro';
 <script>
 	document.addEventListener('DOMContentLoaded', () => {
 		// Mouse tracking for skill cards with enhanced effects
-		const skillCards = document.querySelectorAll('.skill-card');
+		const skillCards = document.querySelectorAll('.skill-card') as NodeListOf<HTMLElement>;
 		skillCards.forEach(card => {
-			card.addEventListener('mousemove', (e) => {
+			card.addEventListener('mousemove', (e: MouseEvent) => {
 				const rect = card.getBoundingClientRect();
 				const x = ((e.clientX - rect.left) / rect.width) * 100;
 				const y = ((e.clientY - rect.top) / rect.height) * 100;
@@ -857,7 +857,7 @@ import Icon from './Icon.astro';
 		// Stagger animation for badges on card hover
 		skillCards.forEach(card => {
 			card.addEventListener('mouseenter', () => {
-				const badges = card.querySelectorAll('.tech-badge');
+				const badges = card.querySelectorAll('.tech-badge') as NodeListOf<HTMLElement>;
 				badges.forEach((badge, index) => {
 					setTimeout(() => {
 						badge.style.animation = 'badge-bounce 0.5s ease-out';
@@ -879,7 +879,8 @@ import Icon from './Icon.astro';
 		const observer = new IntersectionObserver((entries) => {
 			entries.forEach(entry => {
 				if (entry.isIntersecting) {
-					entry.target.style.animationPlayState = 'running';
+					const target = entry.target as HTMLElement;
+					target.style.animationPlayState = 'running';
 				}
 			});
 		}, observerOptions);

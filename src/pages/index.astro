@@ -9,7 +9,6 @@ import CallToAction from '../components/CallToAction.astro';
 import Grid from '../components/Grid.astro';
 import Hero from '../components/Hero.astro';
 import Icon from '../components/Icon.astro';
-import Pill from '../components/Pill.astro';
 import PortfolioPreview from '../components/PortfolioPreview.astro';
 
 // Page section components
@@ -1159,17 +1158,45 @@ const projects = (await getCollection('work'))
 		elements.forEach(el => observer.observe(el));
 
 		// Enhanced Particles animation
-		const canvas = document.getElementById('particles-canvas');
+		type Particle = {
+			x: number;
+			y: number;
+			size: number;
+			speedX: number;
+			speedY: number;
+			opacity: number;
+			angle: number;
+			angleSpeed: number;
+			update: () => void;
+			draw: () => void;
+		};
+
+		const canvas = document.getElementById('particles-canvas') as HTMLCanvasElement | null;
 		if (canvas) {
 			const ctx = canvas.getContext('2d');
+			if (!ctx) return;
+			
 			canvas.width = window.innerWidth;
 			canvas.height = window.innerHeight;
 
-			const particles = [];
+			const particles: Particle[] = [];
 			const particleCount = 80;
 
-			class Particle {
-				constructor() {
+			class ParticleClass implements Particle {
+				x: number;
+				y: number;
+				size: number;
+				speedX: number;
+				speedY: number;
+				opacity: number;
+				angle: number;
+				angleSpeed: number;
+				private canvas: HTMLCanvasElement;
+				private ctx: CanvasRenderingContext2D;
+
+				constructor(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) {
+					this.canvas = canvas;
+					this.ctx = ctx;
 					this.x = Math.random() * canvas.width;
 					this.y = Math.random() * canvas.height;
 					this.size = Math.random() * 4 + 1;
@@ -1194,16 +1221,16 @@ const projects = (await getCollection('work'))
 					this.y += this.speedY;
 
 					// Rebond sur les bords
-					if (this.x > canvas.width) {
-						this.x = canvas.width;
+					if (this.x > this.canvas.width) {
+						this.x = this.canvas.width;
 						this.speedX *= -1;
 					}
 					if (this.x < 0) {
 						this.x = 0;
 						this.speedX *= -1;
 					}
-					if (this.y > canvas.height) {
-						this.y = canvas.height;
+					if (this.y > this.canvas.height) {
+						this.y = this.canvas.height;
 						this.speedY *= -1;
 					}
 					if (this.y < 0) {
@@ -1213,18 +1240,19 @@ const projects = (await getCollection('work'))
 				}
 
 				draw() {
-					ctx.fillStyle = `rgba(102, 126, 234, ${this.opacity})`;
-					ctx.beginPath();
-					ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-					ctx.fill();
+					this.ctx.fillStyle = `rgba(102, 126, 234, ${this.opacity})`;
+					this.ctx.beginPath();
+					this.ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+					this.ctx.fill();
 				}
 			}
 
 			for (let i = 0; i < particleCount; i++) {
-				particles.push(new Particle());
+				particles.push(new ParticleClass(canvas, ctx));
 			}
 
 			function animate() {
+				if (!ctx || !canvas) return;
 				ctx.clearRect(0, 0, canvas.width, canvas.height);
 				
 				particles.forEach(particle => {
@@ -1269,9 +1297,9 @@ const projects = (await getCollection('work'))
 		}
 
 		// Mouse tracking for glass card
-		const glassCard = document.querySelector('.glass-card');
+		const glassCard = document.querySelector('.glass-card') as HTMLElement | null;
 		if (glassCard) {
-			glassCard.addEventListener('mousemove', (e) => {
+			glassCard.addEventListener('mousemove', (e: MouseEvent) => {
 				const rect = glassCard.getBoundingClientRect();
 				const x = ((e.clientX - rect.left) / rect.width) * 100;
 				const y = ((e.clientY - rect.top) / rect.height) * 100;
@@ -1281,11 +1309,11 @@ const projects = (await getCollection('work'))
 		}
 
 		// Enhanced Parallax effect on scroll
-		const heroSection = document.querySelector('.hero-section');
-		const heroImage = document.querySelector('.hero-image-wrapper');
+		const heroSection = document.querySelector('.hero-section') as HTMLElement | null;
+		const heroImage = document.querySelector('.hero-image-wrapper') as HTMLElement | null;
 		if (heroSection && heroImage) {
 			window.addEventListener('scroll', () => {
-				const scrolled = window.pageYOffset;
+				const scrolled = window.scrollY;
 				const rate = scrolled * 0.3;
 				const imageRate = scrolled * 0.2;
 				heroSection.style.transform = `translateY(${rate}px)`;
@@ -1298,7 +1326,7 @@ const projects = (await getCollection('work'))
 		cursor.className = 'custom-cursor';
 		document.body.appendChild(cursor);
 
-		document.addEventListener('mousemove', (e) => {
+		document.addEventListener('mousemove', (e: MouseEvent) => {
 			cursor.style.left = e.clientX + 'px';
 			cursor.style.top = e.clientY + 'px';
 		});
@@ -1315,9 +1343,9 @@ const projects = (await getCollection('work'))
 		});
 
 		// 3D tilt effect on hero image
-		const imageContainer = document.querySelector('.image-container');
+		const imageContainer = document.querySelector('.image-container') as HTMLElement | null;
 		if (imageContainer) {
-			imageContainer.addEventListener('mousemove', (e) => {
+			imageContainer.addEventListener('mousemove', (e: MouseEvent) => {
 				const rect = imageContainer.getBoundingClientRect();
 				const x = e.clientX - rect.left;
 				const y = e.clientY - rect.top;
