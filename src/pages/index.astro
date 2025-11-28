@@ -1308,18 +1308,7 @@ const projects = (await getCollection('work'))
 			});
 		}
 
-		// Enhanced Parallax effect on scroll
-		const heroSection = document.querySelector('.hero-section') as HTMLElement | null;
-		const heroImage = document.querySelector('.hero-image-wrapper') as HTMLElement | null;
-		if (heroSection && heroImage) {
-			window.addEventListener('scroll', () => {
-				const scrolled = window.scrollY;
-				const rate = scrolled * 0.3;
-				const imageRate = scrolled * 0.2;
-				heroSection.style.transform = `translateY(${rate}px)`;
-				heroImage.style.transform = `translateY(${imageRate}px)`;
-			});
-		}
+		// Parallax effect désactivé - l'image reste fixe
 
 		// Cursor effect
 		const cursor = document.createElement('div');
