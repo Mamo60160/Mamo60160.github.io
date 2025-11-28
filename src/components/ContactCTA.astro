@@ -3,44 +3,118 @@ import CallToAction from './CallToAction.astro';
 import Icon from './Icon.astro';
 ---
 
-<aside>
-	<h2>Intéressé par une collaboration ?</h2>
-	<CallToAction href="mailto:alkaya.ma8@gmail.com">
-		Envoyé moi un message
-		<Icon icon="paper-plane-tilt" size="1.2em" />
-	</CallToAction>
-</aside>
+<section class="contact-cta">
+	<div class="wrapper">
+		<div class="contact-content">
+			<div class="contact-text">
+				<h2 class="contact-title">Intéressé par une collaboration ?</h2>
+				<p class="contact-description">
+					Je suis toujours ouvert à discuter de nouveaux projets, opportunités ou simplement échanger sur la technologie.
+				</p>
+			</div>
+			<CallToAction href="mailto:alkaya.ma8@gmail.com">
+				Me contacter
+				<Icon icon="paper-plane-tilt" size="1.2em" />
+			</CallToAction>
+		</div>
+	</div>
+</section>
 
 <style>
-	aside {
+	.contact-cta {
+		padding: 4rem 0;
+		background: var(--gradient-subtle);
+		border-top: 1px solid var(--gray-800);
+		position: relative;
+		overflow: hidden;
+	}
+
+	.contact-cta::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: radial-gradient(ellipse at center, var(--accent-overlay) 0%, transparent 70%);
+		pointer-events: none;
+		z-index: 0;
+		animation: cta-glow 4s ease-in-out infinite;
+	}
+
+	@keyframes cta-glow {
+		0%, 100% {
+			opacity: 0.3;
+		}
+		50% {
+			opacity: 0.6;
+		}
+	}
+
+	.contact-cta::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: radial-gradient(ellipse at center, var(--accent-overlay) 0%, transparent 70%);
+		pointer-events: none;
+		z-index: 0;
+	}
+
+	.contact-content {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 3rem;
-		border-top: 1px solid var(--gray-800);
-		border-bottom: 1px solid var(--gray-800);
-		padding: 5rem 1.5rem;
-		background-color: var(--gray-999_40);
-		box-shadow: var(--shadow-sm);
+		gap: 1.5rem;
+		text-align: center;
+		position: relative;
+		z-index: 1;
+		transform-style: preserve-3d;
 	}
 
-	h2 {
-		font-size: var(--text-xl);
-		text-align: center;
-		max-width: 15ch;
+	.contact-text {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		max-width: 60ch;
+	}
+
+	.contact-title {
+		font-size: var(--text-2xl);
+		color: var(--gray-0);
+		margin: 0;
+		line-height: 1.2;
+	}
+
+	.contact-description {
+		font-size: var(--text-sm);
+		color: var(--gray-300);
+		margin: 0;
+		line-height: 1.6;
 	}
 
 	@media (min-width: 50em) {
-		aside {
-			padding: 7.5rem;
-			flex-direction: row;
-			flex-wrap: wrap;
-			justify-content: space-between;
+		.contact-cta {
+			padding: 5rem 0;
 		}
 
-		h2 {
-			font-size: var(--text-3xl);
+		.contact-content {
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
 			text-align: left;
+		}
+
+		.contact-text {
+			flex: 1;
+			max-width: none;
+		}
+
+		.contact-title {
+			font-size: var(--text-3xl);
+		}
+
+		.contact-description {
+			font-size: var(--text-base);
 		}
 	}
 </style>

@@ -28,42 +28,167 @@ const { Content } = await entry.render();
 ---
 
 <BaseLayout title={entry.data.title} description={entry.data.description}>
-	<div class="stack gap-20">
-		<div class="stack gap-15">
-			<header>
-				<div class="wrapper stack gap-2">
-					<a class="back-link" href="/work/"><Icon icon="arrow-left" /> Work</a>
-					<Hero title={entry.data.title} align="start">
-						<div class="details">
-							<div class="tags">
-								{entry.data.tags.map((t) => <Pill>{t}</Pill>)}
-							</div>
-							<p class="description">{entry.data.description}</p>
-						</div>
-					</Hero>
-				</div>
-			</header>
-			<main class="wrapper">
-				<div class="stack gap-10 content">
-					{entry.data.img && <img src={entry.data.img} alt={entry.data.img_alt || ''} />}
-					<div class="content">
-						<Content />
-					</div>
-				</div>
-			</main>
+	<div class="project-detail-page">
+		<!-- Animated Background -->
+		<div class="animated-background-detail">
+			<div class="gradient-orb-detail"></div>
 		</div>
-		<ContactCTA />
+
+		<div class="stack gap-20">
+			<div class="stack gap-15">
+				<header class="project-header scroll-reveal">
+					<div class="wrapper stack gap-2">
+						<a class="back-link" href="/work/">
+							<Icon icon="arrow-left" size="1.2em" />
+							<span>Retour aux projets</span>
+						</a>
+						<div class="project-hero-wrapper">
+							<Hero title={entry.data.title} align="start">
+								<div class="details">
+									<div class="tags">
+										{entry.data.tags.map((t) => (
+											<Pill class="tag-pill">{t}</Pill>
+										))}
+									</div>
+									<div class="description-wrapper glass-card">
+										<p class="description">{entry.data.description}</p>
+									</div>
+								</div>
+							</Hero>
+						</div>
+					</div>
+				</header>
+				<main class="wrapper project-content-main">
+					<div class="stack gap-10 content scroll-reveal">
+						{entry.data.img && (
+							<div class="project-image-wrapper">
+								<img 
+									src={entry.data.img} 
+									alt={entry.data.img_alt || entry.data.title}
+									class="project-main-image"
+								/>
+								<div class="image-glow-effect"></div>
+							</div>
+						)}
+						<div class="content content-text">
+							<Content />
+						</div>
+					</div>
+				</main>
+			</div>
+			<ContactCTA />
+		</div>
 	</div>
 </BaseLayout>
 
 <style>
-	header {
-		padding-bottom: 2.5rem;
+	.project-detail-page {
+		position: relative;
+		overflow-x: hidden;
+		min-height: 100vh;
+	}
+
+	/* Animated Background */
+	.animated-background-detail {
+		position: fixed;
+		inset: 0;
+		pointer-events: none;
+		z-index: 0;
+		overflow: hidden;
+	}
+
+	.gradient-orb-detail {
+		position: absolute;
+		width: 800px;
+		height: 800px;
+		background: var(--gradient-accent);
+		border-radius: 50%;
+		filter: blur(120px);
+		opacity: 0.2;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		animation: orb-pulse 8s ease-in-out infinite;
+	}
+
+	@keyframes orb-pulse {
+		0%, 100% {
+			opacity: 0.2;
+			transform: translate(-50%, -50%) scale(1);
+		}
+		50% {
+			opacity: 0.4;
+			transform: translate(-50%, -50%) scale(1.2);
+		}
+	}
+
+	.project-header {
+		padding: 3rem 0 2.5rem;
 		border-bottom: 1px solid var(--gray-800);
+		position: relative;
+		z-index: 1;
+		background: linear-gradient(to bottom, transparent, rgba(102, 126, 234, 0.05));
 	}
 
 	.back-link {
-		display: none;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.75rem 1.25rem;
+		background: var(--gradient-subtle);
+		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
+		border: 1px solid var(--gray-800);
+		border-radius: var(--radius-full);
+		color: var(--gray-200);
+		text-decoration: none;
+		font-weight: 500;
+		font-size: var(--text-sm);
+		width: fit-content;
+		transition: all var(--theme-transition);
+		margin-bottom: 1rem;
+		box-shadow: var(--shadow-sm);
+		position: relative;
+		overflow: hidden;
+	}
+
+	.back-link::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: var(--gradient-accent);
+		opacity: 0;
+		transition: opacity var(--theme-transition);
+		z-index: 0;
+	}
+
+	.back-link span {
+		position: relative;
+		z-index: 1;
+	}
+
+	.back-link :global(svg) {
+		color: var(--accent-regular);
+		transition: transform var(--theme-transition);
+	}
+
+	.back-link:hover {
+		transform: translateX(-8px) scale(1.05);
+		border-color: var(--accent-regular);
+		box-shadow: var(--shadow-lg), var(--shadow-glow);
+		color: var(--accent-text-over);
+	}
+
+	.back-link:hover::before {
+		opacity: 0.2;
+	}
+
+	.back-link:hover :global(svg) {
+		transform: translateX(-5px) rotate(-15deg);
+	}
+
+	.project-hero-wrapper {
+		position: relative;
 	}
 
 	.details {
@@ -72,80 +197,301 @@ const { Content } = await entry.render();
 		padding: 0.5rem;
 		gap: 1.5rem;
 		justify-content: space-between;
-		align-items: center;
+		align-items: flex-start;
+		margin-top: 1.5rem;
 	}
 
 	.tags {
 		display: flex;
-		gap: 0.5rem;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+	}
+
+	.tag-pill {
+		animation: tag-appear 0.6s ease-out backwards;
+		position: relative;
+		overflow: hidden;
+		transition: all var(--theme-transition);
+	}
+
+	.tag-pill::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: var(--gradient-accent);
+		opacity: 0;
+		transition: opacity var(--theme-transition);
+		z-index: 0;
+	}
+
+	.tag-pill:hover {
+		transform: translateY(-3px) scale(1.05);
+		box-shadow: var(--shadow-md);
+	}
+
+	.tag-pill:hover::before {
+		opacity: 0.1;
+	}
+
+	.tag-pill :global(*) {
+		position: relative;
+		z-index: 1;
+	}
+
+	.tag-pill:nth-child(1) { animation-delay: 0.1s; }
+	.tag-pill:nth-child(2) { animation-delay: 0.2s; }
+	.tag-pill:nth-child(3) { animation-delay: 0.3s; }
+	.tag-pill:nth-child(4) { animation-delay: 0.4s; }
+	.tag-pill:nth-child(5) { animation-delay: 0.5s; }
+
+	@keyframes tag-appear {
+		from {
+			opacity: 0;
+			transform: scale(0.8) translateY(10px) rotateX(90deg);
+		}
+		to {
+			opacity: 1;
+			transform: scale(1) translateY(0) rotateX(0deg);
+		}
+	}
+
+	.description-wrapper {
+		padding: 1.5rem;
+		border-radius: var(--radius-lg);
+		backdrop-filter: blur(20px);
+		-webkit-backdrop-filter: blur(20px);
+		background: rgba(255, 255, 255, 0.05);
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		box-shadow: var(--shadow-md);
+		transition: all var(--theme-transition);
+		max-width: 60ch;
+	}
+
+	.description-wrapper:hover {
+		background: rgba(255, 255, 255, 0.08);
+		transform: translateY(-3px);
+		box-shadow: var(--shadow-lg);
+		border-color: var(--accent-regular);
 	}
 
 	.description {
 		font-size: var(--text-lg);
-		max-width: 54ch;
+		color: var(--gray-200);
+		line-height: 1.7;
+		margin: 0;
 	}
 
-	.content {
+	.project-content-main {
+		position: relative;
+		z-index: 1;
+		padding: 3rem 0;
+	}
+
+	.project-image-wrapper {
+		position: relative;
+		border-radius: var(--radius-2xl);
+		overflow: hidden;
+		box-shadow: var(--shadow-xl);
+		background: var(--gray-900);
+	}
+
+	.project-main-image {
+		width: 100%;
+		height: auto;
+		display: block;
+		border-radius: var(--radius-2xl);
+		transition: transform var(--transition-slow);
+	}
+
+	.image-glow-effect {
+		position: absolute;
+		inset: -30px;
+		background: var(--gradient-accent);
+		border-radius: var(--radius-2xl);
+		opacity: 0.3;
+		filter: blur(40px);
+		z-index: -1;
+		animation: image-glow-pulse 3s ease-in-out infinite;
+	}
+
+	@keyframes image-glow-pulse {
+		0%, 100% {
+			opacity: 0.3;
+		}
+		50% {
+			opacity: 0.5;
+		}
+	}
+
+	.project-image-wrapper:hover .project-main-image {
+		transform: scale(1.02);
+	}
+
+	.content-text {
 		max-width: 65ch;
 		margin-inline: auto;
+		color: var(--gray-300);
+		font-size: var(--text-base);
+		line-height: 1.8;
 	}
 
-	.content > :global(* + *) {
-		margin-top: 1rem;
+	.content-text > :global(* + *) {
+		margin-top: 1.5rem;
 	}
 
-	.content :global(h1),
-	.content :global(h2),
-	.content :global(h3),
-	.content :global(h4),
-	.content :global(h5) {
-		margin: 1.5rem 0;
+	.content-text :global(h1),
+	.content-text :global(h2),
+	.content-text :global(h3),
+	.content-text :global(h4),
+	.content-text :global(h5) {
+		margin: 2rem 0 1rem 0;
+		color: var(--gray-0);
+		position: relative;
+		padding-left: 1rem;
+		border-left: 3px solid var(--accent-regular);
+		transition: all var(--theme-transition);
 	}
 
-	.content :global(img) {
-		border-radius: 1.5rem;
-		box-shadow: var(--shadow-sm);
+	.content-text :global(h1:hover),
+	.content-text :global(h2:hover),
+	.content-text :global(h3:hover),
+	.content-text :global(h4:hover),
+	.content-text :global(h5:hover) {
+		padding-left: 1.5rem;
+		border-left-width: 5px;
+		transform: translateX(5px);
+		box-shadow: -5px 0 20px rgba(102, 126, 234, 0.3);
+	}
+
+	.content-text :global(p) {
+		margin: 1rem 0;
+	}
+
+	.content-text :global(ul),
+	.content-text :global(ol) {
+		margin: 1rem 0;
+		padding-left: 2rem;
+	}
+
+	.content-text :global(li) {
+		margin: 0.5rem 0;
+	}
+
+	.content-text :global(strong) {
+		color: var(--gray-100);
+		font-weight: 600;
+	}
+
+	.content-text :global(img) {
+		border-radius: var(--radius-xl);
+		box-shadow: var(--shadow-lg);
 		background: var(--gradient-subtle);
 		border: 1px solid var(--gray-800);
+		margin: 2rem 0;
+		transition: transform var(--theme-transition);
 	}
 
-	.content :global(blockquote) {
-		font-size: var(--text-lg);
+	.content-text :global(img:hover) {
+		transform: scale(1.02);
+		box-shadow: var(--shadow-xl);
+	}
+
+	.content-text :global(blockquote) {
+		font-size: var(--text-xl);
 		font-family: var(--font-brand);
 		font-weight: 600;
-		line-height: 1.1;
-		padding-inline-start: 1.5rem;
-		border-inline-start: 0.25rem solid var(--accent-dark);
+		line-height: 1.4;
+		padding: 2rem;
+		border-left: 4px solid var(--accent-regular);
+		background: var(--gradient-subtle);
+		border-radius: var(--radius-lg);
 		color: var(--gray-0);
+		margin: 2rem 0;
+		position: relative;
+		box-shadow: var(--shadow-md);
+	}
+
+	.content-text :global(blockquote::before) {
+		content: '"';
+		font-size: 4rem;
+		position: absolute;
+		top: -10px;
+		left: 10px;
+		color: var(--accent-regular);
+		opacity: 0.3;
+		font-family: serif;
 	}
 
 	.back-link,
-	.content :global(a) {
-		text-decoration: 1px solid underline transparent;
-		text-underline-offset: 0.25em;
-		transition: text-decoration-color var(--theme-transition);
+	.content-text :global(a) {
+		color: var(--accent-regular);
+		text-decoration: none;
+		transition: all var(--theme-transition);
+		border-bottom: 2px solid transparent;
 	}
 
 	.back-link:hover,
 	.back-link:focus,
-	.content :global(a:hover),
-	.content :global(a:focus) {
-		text-decoration-color: currentColor;
+	.content-text :global(a:hover),
+	.content-text :global(a:focus) {
+		color: var(--accent-light);
+		border-bottom-color: var(--accent-regular);
+	}
+
+	.scroll-reveal {
+		opacity: 0;
+		transform: translateY(50px);
+		transition: all 0.8s ease-out;
+	}
+
+	.scroll-reveal.visible {
+		opacity: 1;
+		transform: translateY(0);
 	}
 
 	@media (min-width: 50em) {
-		.back-link {
-			display: block;
-			align-self: flex-start;
+		.project-header {
+			padding: 4rem 0 3rem;
 		}
 
 		.details {
 			flex-direction: row;
 			gap: 2.5rem;
+			align-items: center;
 		}
 
-		.content :global(blockquote) {
+		.description {
+			font-size: var(--text-xl);
+		}
+
+		.content-text :global(blockquote) {
 			font-size: var(--text-2xl);
+			padding: 2.5rem;
+		}
+
+		.project-content-main {
+			padding: 4rem 0;
 		}
 	}
 </style>
+
+<script>
+	// Scroll reveal animation
+	const observerOptions = {
+		threshold: 0.1,
+		rootMargin: '0px 0px -100px 0px'
+	};
+
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				entry.target.classList.add('visible');
+			}
+		});
+	}, observerOptions);
+
+	document.addEventListener('DOMContentLoaded', () => {
+		const elements = document.querySelectorAll('.scroll-reveal');
+		elements.forEach(el => observer.observe(el));
+	});
+</script>

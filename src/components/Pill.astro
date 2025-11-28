@@ -2,15 +2,55 @@
 
 <style>
 	.pill {
-		display: flex;
+		display: inline-flex;
+		align-items: center;
 		padding: 0.5rem 1rem;
 		gap: 0.5rem;
 		color: var(--accent-text-over);
 		border: 1px solid var(--accent-regular);
-		background-color: var(--accent-regular);
+		background: var(--gradient-accent);
 		border-radius: 999rem;
-		font-size: var(--text-md);
+		font-size: var(--text-sm);
+		font-weight: 600;
 		line-height: 1.35;
 		white-space: nowrap;
+		position: relative;
+		overflow: hidden;
+		transition: all var(--theme-transition);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.pill::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
+		opacity: 0;
+		transition: opacity var(--theme-transition);
+	}
+
+	.pill::after {
+		content: '';
+		position: absolute;
+		inset: -2px;
+		background: var(--gradient-accent);
+		border-radius: 999rem;
+		opacity: 0;
+		filter: blur(8px);
+		z-index: -1;
+		transition: opacity var(--theme-transition);
+	}
+
+	.pill:hover {
+		transform: translateY(-2px) scale(1.05);
+		box-shadow: var(--shadow-md), var(--shadow-glow);
+	}
+
+	.pill:hover::before {
+		opacity: 1;
+	}
+
+	.pill:hover::after {
+		opacity: 0.6;
 	}
 </style>

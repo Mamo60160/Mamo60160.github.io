@@ -7,6 +7,7 @@ import ContactCTA from '../components/ContactCTA.astro';
 import PortfolioPreview from '../components/PortfolioPreview.astro';
 import Hero from '../components/Hero.astro';
 import Grid from '../components/Grid.astro';
+import Icon from '../components/Icon.astro';
 
 const projects = (await getCollection('work')).sort(
 	(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
@@ -15,25 +16,259 @@ const projects = (await getCollection('work')).sort(
 
 <BaseLayout
 	title="Mes projets | Mehmet Alkaya"
-	description="Learn about Mehmet Alkaya's most recent projects"
+	description="Découvrez tous les projets de Mehmet Alkaya - Développeur IA, Cloud & Full-Stack"
 >
-	<div class="stack gap-20">
-		<main class="wrapper stack gap-8">
-			<Hero
-				title="Mes projets"
-				tagline="Consultez mes projets les plus récents ci-dessous pour vous faire une idée de mon expérience passée."
-				align="start"
-			/>
-			<Grid variant="offset">
-				{
-					projects.map((project) => (
-						<li>
-							<PortfolioPreview project={project} />
-						</li>
-					))
-				}
-			</Grid>
+	<div class="work-page">
+		<!-- Animated Background -->
+		<div class="animated-background-work">
+			<div class="gradient-orb-work orb-1"></div>
+			<div class="gradient-orb-work orb-2"></div>
+		</div>
+
+		<!-- Hero Section -->
+		<section class="work-hero scroll-reveal">
+			<div class="wrapper">
+				<div class="work-hero-content">
+					<div class="work-badge">
+						<Icon icon="code" size="1.2em" />
+						<span>{projects.length} Projets</span>
+					</div>
+					<Hero
+						title="Mes projets"
+						tagline="Découvrez une sélection de mes réalisations, allant de l'intelligence artificielle au développement full-stack"
+						align="start"
+					/>
+				</div>
+			</div>
+		</section>
+
+		<!-- Projects Grid -->
+		<main class="wrapper work-main">
+			<div class="projects-container">
+				<Grid variant="offset">
+					{
+						projects.map((project, index) => (
+							<li class="project-item" style={`--delay: ${index * 0.1}s`}>
+								<PortfolioPreview project={project} />
+							</li>
+						))
+					}
+				</Grid>
+			</div>
 		</main>
+
 		<ContactCTA />
 	</div>
 </BaseLayout>
+
+<style>
+	.work-page {
+		position: relative;
+		overflow-x: hidden;
+		min-height: 100vh;
+	}
+
+	/* Animated Background */
+	.animated-background-work {
+		position: fixed;
+		inset: 0;
+		pointer-events: none;
+		z-index: 0;
+		overflow: hidden;
+	}
+
+	.gradient-orb-work {
+		position: absolute;
+		border-radius: 50%;
+		filter: blur(100px);
+		opacity: 0.3;
+		animation: float-work 25s ease-in-out infinite;
+	}
+
+	.orb-1 {
+		width: 600px;
+		height: 600px;
+		background: var(--gradient-accent);
+		top: 10%;
+		right: -200px;
+		animation-delay: 0s;
+	}
+
+	.orb-2 {
+		width: 500px;
+		height: 500px;
+		background: linear-gradient(135deg, #f093fb 0%, #4facfe 100%);
+		bottom: 20%;
+		left: -150px;
+		animation-delay: -12s;
+	}
+
+	@keyframes float-work {
+		0%, 100% {
+			transform: translate(0, 0) scale(1);
+		}
+		50% {
+			transform: translate(50px, -50px) scale(1.2);
+		}
+	}
+
+	/* Hero Section */
+	.work-hero {
+		padding: 3rem 0 4rem;
+		position: relative;
+		z-index: 1;
+		overflow: hidden;
+	}
+
+	.work-hero::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: radial-gradient(ellipse at top, var(--accent-overlay) 0%, transparent 70%);
+		pointer-events: none;
+		z-index: 0;
+	}
+
+	.work-hero-content {
+		position: relative;
+		z-index: 1;
+	}
+
+	.work-hero-content {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	.work-badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.75rem;
+		padding: 0.75rem 1.5rem;
+		background: var(--gradient-subtle);
+		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
+		border: 1px solid var(--gray-800);
+		border-radius: var(--radius-full);
+		font-size: var(--text-sm);
+		color: var(--gray-200);
+		font-weight: 600;
+		width: fit-content;
+		box-shadow: var(--shadow-md);
+		transition: all var(--theme-transition);
+	}
+
+	.work-badge:hover {
+		transform: translateY(-3px);
+		box-shadow: var(--shadow-lg);
+		border-color: var(--accent-regular);
+	}
+
+	.work-badge :global(svg) {
+		color: var(--accent-regular);
+		animation: icon-pulse 2s ease-in-out infinite;
+	}
+
+	@keyframes icon-pulse {
+		0%, 100% {
+			transform: scale(1);
+		}
+		50% {
+			transform: scale(1.1);
+		}
+	}
+
+	/* Projects Grid */
+	.work-main {
+		padding: 2rem 0 4rem;
+		position: relative;
+		z-index: 1;
+	}
+
+	.work-main::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: linear-gradient(to bottom, transparent, var(--accent-overlay), transparent);
+		pointer-events: none;
+		z-index: 0;
+		opacity: 0.2;
+	}
+
+	.work-main > * {
+		position: relative;
+		z-index: 1;
+	}
+
+	.projects-container {
+		position: relative;
+	}
+
+	.project-item {
+		opacity: 0;
+		transform: translateY(50px) scale(0.9) rotateY(10deg);
+		animation: project-fade-in 0.8s ease-out forwards;
+		animation-delay: var(--delay, 0s);
+		transition: all var(--theme-transition);
+	}
+
+	.project-item:hover {
+		transform: translateY(-5px) scale(1.02);
+		z-index: 10;
+	}
+
+	@keyframes project-fade-in {
+		to {
+			opacity: 1;
+			transform: translateY(0) scale(1) rotateY(0deg);
+		}
+	}
+
+	.scroll-reveal {
+		opacity: 0;
+		transform: translateY(50px);
+		transition: all 0.8s ease-out;
+	}
+
+	.scroll-reveal.visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	@media (min-width: 50em) {
+		.work-hero {
+			padding: 4rem 0 5rem;
+		}
+
+		.work-main {
+			padding: 3rem 0 5rem;
+		}
+	}
+</style>
+
+<script>
+	// Scroll reveal animation
+	const observerOptions = {
+		threshold: 0.1,
+		rootMargin: '0px 0px -100px 0px'
+	};
+
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				entry.target.classList.add('visible');
+			}
+		});
+	}, observerOptions);
+
+	document.addEventListener('DOMContentLoaded', () => {
+		const elements = document.querySelectorAll('.scroll-reveal');
+		elements.forEach(el => observer.observe(el));
+	});
+</script>

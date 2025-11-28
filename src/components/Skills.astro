@@ -1,73 +1,889 @@
 ---
 import Icon from './Icon.astro';
+
+// Note: Les icônes de check sont remplacées par des puces CSS pour un design plus moderne
 ---
 
-<section class="box skills">
-	<div class="stack gap-2 lg:gap-4">
-		<Icon icon="terminal-window" color="var(--accent-regular)" size="2.5rem" gradient />
-		<h2>Dévelopement et programmation</h2>
-		<p> - Identification des besoins du client et proposition de solutions.</p>
-		<p> - Supervision de l'équipe tout en respectant le cahier des charges et les délais.</p>
-		<p> - Communication régulière avec les parties prenantes pour assurer le bon déroulement du projet</p>
+<section class="skills-modern">
+	<div class="skills-header-modern">
+		<div class="skills-icon-wrapper">
+			<Icon icon="rocket-launch" color="var(--accent-regular)" size="3rem" gradient />
+		</div>
+		<h2 class="skills-title">Compétences Techniques</h2>
+		<p class="skills-subtitle">Technologies et outils que j'utilise pour créer des solutions innovantes</p>
+	</div>
+	
+	<div class="skills-visual-modern">
+		<div class="skills-image-container">
+			<img 
+				src="/assets/skills-icons.png" 
+				alt="Icônes des compétences techniques : C, C++, HTML5, CSS3, React, JavaScript, Python, Figma, Agile, IA, Docker, Linux, GitHub, Trello"
+				class="skills-image"
+			/>
+		</div>
+	</div>
+	
+	<div class="skills-grid">
+		<div class="skill-card">
+			<div class="skill-card-header">
+				<div class="skill-icon-wrapper">
+					<Icon icon="strategy" color="var(--accent-regular)" size="2rem" gradient />
+				</div>
+				<h3>Intelligence Artificielle & Data</h3>
+			</div>
+			<div class="skill-content">
+				<div class="skill-category">
+					<span class="category-label">Extraction & Analyse</span>
+					<div class="tech-badges">
+						<span class="tech-badge" data-tech="PDF">PDF</span>
+						<span class="tech-badge" data-tech="CSV">CSV</span>
+						<span class="tech-badge" data-tech="APIs">APIs</span>
+						<span class="tech-badge" data-tech="Pandas">Pandas</span>
+						<span class="tech-badge" data-tech="NumPy">NumPy</span>
+					</div>
+				</div>
+				<div class="skill-category">
+					<span class="category-label">Traitement du Langage</span>
+					<div class="tech-badges">
+						<span class="tech-badge" data-tech="LLM">LLM</span>
+						<span class="tech-badge" data-tech="NLP">NLP</span>
+						<span class="tech-badge" data-tech="Scoring">Scoring</span>
+						<span class="tech-badge" data-tech="OpenAI">OpenAI</span>
+					</div>
+				</div>
+				<div class="skill-category">
+					<span class="category-label">Modélisation</span>
+					<div class="tech-badges">
+						<span class="tech-badge" data-tech="RandomForest">RandomForest</span>
+						<span class="tech-badge" data-tech="Streamlit">Streamlit</span>
+						<span class="tech-badge" data-tech="Scikit-learn">Scikit-learn</span>
+						<span class="tech-badge" data-tech="Matplotlib">Matplotlib</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="skill-card">
+			<div class="skill-card-header">
+				<div class="skill-icon-wrapper">
+					<Icon icon="cloud" color="var(--accent-regular)" size="2rem" gradient />
+				</div>
+				<h3>Cloud & DevOps</h3>
+			</div>
+			<div class="skill-content">
+				<div class="skill-category">
+					<span class="category-label">Déploiement</span>
+					<div class="tech-badges">
+						<span class="tech-badge" data-tech="Render">Render</span>
+						<span class="tech-badge" data-tech="Heroku">Heroku</span>
+						<span class="tech-badge" data-tech="Supabase">Supabase</span>
+						<span class="tech-badge" data-tech="Vercel">Vercel</span>
+						<span class="tech-badge" data-tech="Netlify">Netlify</span>
+					</div>
+				</div>
+				<div class="skill-category">
+					<span class="category-label">CI/CD</span>
+					<div class="tech-badges">
+						<span class="tech-badge" data-tech="GitHub Actions">GitHub Actions</span>
+						<span class="tech-badge" data-tech="Pipelines">Pipelines</span>
+						<span class="tech-badge" data-tech="Environnements">Environnements</span>
+					</div>
+				</div>
+				<div class="skill-category">
+					<span class="category-label">Conteneurisation</span>
+					<div class="tech-badges">
+						<span class="tech-badge" data-tech="Docker">Docker</span>
+						<span class="tech-badge" data-tech="Kubernetes">Kubernetes</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="skill-card">
+			<div class="skill-card-header">
+				<div class="skill-icon-wrapper">
+					<Icon icon="code" color="var(--accent-regular)" size="2rem" gradient />
+				</div>
+				<h3>Développement Full-Stack</h3>
+			</div>
+			<div class="skill-content">
+				<div class="skill-category">
+					<span class="category-label">Frontend</span>
+					<div class="tech-badges">
+						<span class="tech-badge" data-tech="ReactJS">ReactJS</span>
+						<span class="tech-badge" data-tech="NextJS">NextJS</span>
+						<span class="tech-badge" data-tech="HTML">HTML</span>
+						<span class="tech-badge" data-tech="CSS">CSS</span>
+						<span class="tech-badge" data-tech="JavaScript">JavaScript</span>
+						<span class="tech-badge" data-tech="TypeScript">TypeScript</span>
+						<span class="tech-badge" data-tech="Tailwind">Tailwind</span>
+					</div>
+				</div>
+				<div class="skill-category">
+					<span class="category-label">Backend</span>
+					<div class="tech-badges">
+						<span class="tech-badge" data-tech="Python">Python</span>
+						<span class="tech-badge" data-tech="Node.js">Node.js</span>
+						<span class="tech-badge" data-tech="Express">Express</span>
+						<span class="tech-badge" data-tech="Strapi">Strapi</span>
+						<span class="tech-badge" data-tech="FastAPI">FastAPI</span>
+					</div>
+				</div>
+				<div class="skill-category">
+					<span class="category-label">Bases de données</span>
+					<div class="tech-badges">
+						<span class="tech-badge" data-tech="MySQL">MySQL</span>
+						<span class="tech-badge" data-tech="PostgreSQL">PostgreSQL</span>
+						<span class="tech-badge" data-tech="MongoDB">MongoDB</span>
+						<span class="tech-badge" data-tech="SQLite">SQLite</span>
+					</div>
+				</div>
+			</div>
+		</div>
 
-	</div>
-	<div class="stack gap-2 lg:gap-4">
-		<Icon icon="groupe" color="var(--accent-regular)" size="2.5rem" gradient />
-		<h2>Gestion de projet</h2>
-		<p></p>
-		<p></p>
-		<p> - Programmation en C pour l'optimisation des performances et la gestion de la mémoire.</p>
-		<p> - Développement de solutions Web et Mobiles (prototypage, programmation et déploiement).</p>
-		<p> - Résolution de problèmes complexes et implémentation d'algorithmes en C.</p>
-		<p> - Conception, gestion et manipulation de bases de données.</p>
-	</div>
-	<div class="stack gap-2 lg:gap-4">
-		<Icon icon="strategy" color="var(--accent-regular)" size="2.5rem" gradient />
-		<h2>Marketing, Communication</h2>
-		<p> - Veille sur les nouvelles tendances et technologies.</p>
-		<p> - Analyse de données pour optimiser les campagnes marketing.</p>
-		<p> - Programmation en C pour le développement d'outils d'automatisation marketing.</p>
-		<p> - Brand Strategy (positionnement, cible, benchmark).</p>
+		<div class="skill-card">
+			<div class="skill-card-header">
+				<div class="skill-icon-wrapper">
+					<Icon icon="terminal-window" color="var(--accent-regular)" size="2rem" gradient />
+				</div>
+				<h3>Langages & Outils</h3>
+			</div>
+			<div class="skill-content">
+				<div class="skill-category">
+					<span class="category-label">Langages</span>
+					<div class="tech-badges">
+						<span class="tech-badge" data-tech="C">C</span>
+						<span class="tech-badge" data-tech="C++">C++</span>
+						<span class="tech-badge" data-tech="Python">Python</span>
+						<span class="tech-badge" data-tech="JavaScript">JavaScript</span>
+						<span class="tech-badge" data-tech="TypeScript">TypeScript</span>
+					</div>
+				</div>
+				<div class="skill-category">
+					<span class="category-label">Outils de développement</span>
+					<div class="tech-badges">
+						<span class="tech-badge" data-tech="Git">Git</span>
+						<span class="tech-badge" data-tech="GitHub">GitHub</span>
+						<span class="tech-badge" data-tech="VS Code">VS Code</span>
+						<span class="tech-badge" data-tech="Linux">Linux</span>
+					</div>
+				</div>
+				<div class="skill-category">
+					<span class="category-label">Design & Prototypage</span>
+					<div class="tech-badges">
+						<span class="tech-badge" data-tech="Figma">Figma</span>
+						<span class="tech-badge" data-tech="Adobe XD">Adobe XD</span>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </section>
 
 <style>
-	.box {
-		border: 1px solid var(--gray-800);
-		border-radius: 0.75rem;
-		padding: 1.5rem;
-		background-color: var(--gray-999_40);
-		box-shadow: var(--shadow-sm);
-	}
-
-	.skills {
+	.skills-modern {
 		display: flex;
 		flex-direction: column;
-		gap: 3rem;
+		gap: 2rem;
+		position: relative;
 	}
 
-	.skills h2 {
+	.skills-modern::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 600px;
+		height: 600px;
+		background: radial-gradient(circle, var(--accent-overlay) 0%, transparent 70%);
+		opacity: 0.2;
+		filter: blur(80px);
+		pointer-events: none;
+		z-index: 0;
+		animation: skills-orb 8s ease-in-out infinite;
+	}
+
+	@keyframes skills-orb {
+		0%, 100% {
+			opacity: 0.2;
+			transform: translateX(-50%) scale(1);
+		}
+		50% {
+			opacity: 0.4;
+			transform: translateX(-50%) scale(1.2);
+		}
+	}
+
+	.skills-modern > * {
+		position: relative;
+		z-index: 1;
+	}
+
+	.skills-header-modern {
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+		margin-bottom: 2rem;
+		position: relative;
+		opacity: 0;
+		transform: translateY(20px);
+		animation: header-fade-in 1s ease-out 0.2s forwards;
+	}
+
+	@keyframes header-fade-in {
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	.skills-icon-wrapper {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 5rem;
+		height: 5rem;
+		background: var(--gradient-subtle);
+		border-radius: var(--radius-full);
+		margin-bottom: 0.5rem;
+		position: relative;
+		animation: icon-rotate 20s linear infinite;
+	}
+
+	.skills-icon-wrapper::before {
+		content: '';
+		position: absolute;
+		inset: -3px;
+		border-radius: var(--radius-full);
+		background: var(--gradient-accent);
+		opacity: 0.3;
+		filter: blur(10px);
+		z-index: -1;
+		animation: icon-glow 3s ease-in-out infinite;
+	}
+
+	@keyframes icon-rotate {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
+	@keyframes icon-glow {
+		0%, 100% {
+			opacity: 0.3;
+			transform: scale(1);
+		}
+		50% {
+			opacity: 0.5;
+			transform: scale(1.1);
+		}
+	}
+
+	.skills-title {
+		font-size: var(--text-3xl);
+		margin: 0;
+		color: var(--gray-0);
+		background: linear-gradient(135deg, var(--gray-0) 0%, var(--accent-regular) 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		background-size: 200% 200%;
+		animation: title-gradient 5s ease infinite;
+		position: relative;
+	}
+
+	.skills-subtitle {
 		font-size: var(--text-lg);
+		color: var(--gray-300);
+		max-width: 60ch;
+		margin: 0;
+		line-height: 1.6;
+		opacity: 0;
+		animation: subtitle-fade-in 1s ease-out 0.4s forwards;
 	}
 
-	.skills p {
-		color: var(--gray-400);
+	@keyframes subtitle-fade-in {
+		to {
+			opacity: 1;
+		}
+	}
+
+	.skills-visual-modern {
+		display: flex;
+		justify-content: center;
+		margin: 1.5rem 0;
+	}
+
+	.skills-image-container {
+		position: relative;
+		border-radius: var(--radius-xl);
+		overflow: hidden;
+		box-shadow: var(--shadow-lg);
+		background: var(--gradient-card);
+		padding: 1.5rem;
+		transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+		opacity: 0;
+		transform: translateY(30px) scale(0.95);
+		animation: image-fade-in 1s ease-out 0.6s forwards;
+	}
+
+	@keyframes image-fade-in {
+		to {
+			opacity: 1;
+			transform: translateY(0) scale(1);
+		}
+	}
+
+	.skills-image-container::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: var(--gradient-accent);
+		opacity: 0;
+		transition: opacity 0.4s ease;
+		z-index: 1;
+		pointer-events: none;
+		border-radius: var(--radius-xl);
+	}
+
+	.skills-image-container:hover {
+		transform: translateY(-8px) scale(1.02);
+		box-shadow: var(--shadow-xl), 0 0 40px rgba(102, 126, 234, 0.3);
+	}
+
+	.skills-image-container:hover::before {
+		opacity: 0.1;
+	}
+
+	.skills-image {
+		max-width: 100%;
+		height: auto;
+		border-radius: var(--radius-md);
+		display: block;
+		position: relative;
+		z-index: 2;
+		transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.skills-image-container:hover .skills-image {
+		transform: scale(1.05);
+	}
+
+	.skills-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+	}
+
+	.skill-card:nth-child(1) {
+		animation-delay: 0.1s;
+	}
+
+	.skill-card:nth-child(2) {
+		animation-delay: 0.2s;
+	}
+
+	.skill-card:nth-child(3) {
+		animation-delay: 0.3s;
+	}
+
+	.skill-card:nth-child(4) {
+		animation-delay: 0.4s;
+	}
+
+	.skill-card {
+		background: var(--gradient-card);
+		border: 1px solid var(--gray-800);
+		border-radius: var(--radius-xl);
+		padding: 1.5rem;
+		box-shadow: var(--shadow-md);
+		transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+		position: relative;
+		overflow: hidden;
+		opacity: 0;
+		transform: translateY(30px) scale(0.95) rotateX(5deg);
+		animation: card-fade-in 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+		transform-style: preserve-3d;
+		perspective: 1000px;
+	}
+
+	.skill-card::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 4px;
+		background: var(--gradient-accent);
+		opacity: 0;
+		transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+		box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+		transform: scaleX(0);
+		transform-origin: left;
+	}
+
+	.skill-card::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(102, 126, 234, 0.1) 0%, transparent 50%);
+		opacity: 0;
+		transition: opacity var(--theme-transition);
+		pointer-events: none;
+	}
+
+	.skill-card:hover {
+		transform: translateY(-12px) scale(1.04) rotateX(-2deg);
+		box-shadow: var(--shadow-xl), var(--shadow-glow), 0 0 50px rgba(102, 126, 234, 0.3), 0 20px 60px rgba(0, 0, 0, 0.3);
+		border-color: var(--accent-regular);
+		background: rgba(255, 255, 255, 0.1);
+	}
+
+	.skill-card:hover::before {
+		opacity: 1;
+		box-shadow: 0 0 40px rgba(102, 126, 234, 0.9);
+		transform: scaleX(1);
+	}
+
+	.skill-card:hover::after {
+		opacity: 1;
+	}
+
+	.skill-card-header {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		margin-bottom: 1.5rem;
+		position: relative;
+	}
+
+	.skill-icon-wrapper {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 4rem;
+		height: 4rem;
+		background: var(--gradient-subtle);
+		border-radius: var(--radius-lg);
+		position: relative;
+		transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+		border: 2px solid transparent;
+		animation: icon-pulse 3s ease-in-out infinite;
+	}
+
+	@keyframes icon-pulse {
+		0%, 100% {
+			box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.4);
+		}
+		50% {
+			box-shadow: 0 0 0 8px rgba(102, 126, 234, 0);
+		}
+	}
+
+	.skill-icon-wrapper::before {
+		content: '';
+		position: absolute;
+		inset: -3px;
+		background: var(--gradient-accent);
+		border-radius: var(--radius-lg);
+		opacity: 0;
+		filter: blur(12px);
+		transition: opacity var(--theme-transition);
+		z-index: -1;
+	}
+
+	.skill-icon-wrapper::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: var(--gradient-accent);
+		border-radius: var(--radius-lg);
+		opacity: 0;
+		transition: opacity var(--theme-transition);
+		z-index: 0;
+	}
+
+	.skill-card:hover .skill-icon-wrapper {
+		transform: scale(1.2) rotate(15deg);
+		border-color: var(--accent-regular);
+		box-shadow: 0 0 35px rgba(102, 126, 234, 0.6), 0 0 60px rgba(102, 126, 234, 0.3);
+		animation: none;
+	}
+
+	.skill-card:hover .skill-icon-wrapper::before {
+		opacity: 0.6;
+	}
+
+	.skill-card:hover .skill-icon-wrapper::after {
+		opacity: 0.1;
+	}
+
+	.skill-icon-wrapper :global(svg) {
+		position: relative;
+		z-index: 1;
+	}
+
+	@keyframes card-fade-in {
+		to {
+			opacity: 1;
+			transform: translateY(0) scale(1) rotateX(0deg);
+		}
+	}
+
+	.skill-icon-wrapper :global(svg) {
+		transition: transform var(--theme-transition);
+	}
+
+	.skill-card:hover .skill-icon-wrapper :global(svg) {
+		transform: scale(1.2) rotate(10deg);
+	}
+
+	.skill-card-header h3 {
+		font-size: var(--text-xl);
+		margin: 0;
+		color: var(--gray-0);
+		font-weight: 700;
+		background: linear-gradient(135deg, var(--gray-0) 0%, var(--accent-regular) 50%, var(--gray-0) 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		background-size: 200% 200%;
+		animation: title-gradient 5s ease infinite;
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		position: relative;
+		display: inline-block;
+	}
+
+	.skill-card-header h3::after {
+		content: '';
+		position: absolute;
+		bottom: -4px;
+		left: 0;
+		width: 0;
+		height: 3px;
+		background: var(--gradient-accent);
+		border-radius: var(--radius-sm);
+		transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+		box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+	}
+
+	.skill-card:hover .skill-card-header h3::after {
+		width: 100%;
+	}
+
+	.skill-card:hover .skill-card-header h3 {
+		transform: translateX(8px) scale(1.02);
+		filter: drop-shadow(0 0 15px rgba(102, 126, 234, 0.6));
+	}
+
+	.skill-content {
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+	}
+
+	.skill-category {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		padding: 1.25rem;
+		background: rgba(255, 255, 255, 0.02);
+		border-radius: var(--radius-md);
+		border: 1px solid var(--gray-800);
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		position: relative;
+		overflow: visible;
+		backdrop-filter: blur(5px);
+		-webkit-backdrop-filter: blur(5px);
+	}
+
+	.skill-category::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: -100%;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+		transition: left 0.5s ease;
+	}
+
+	.skill-category:hover::after {
+		left: 100%;
+	}
+
+	.skill-category::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		width: 3px;
+		background: var(--gradient-accent);
+		opacity: 0;
+		transition: opacity var(--theme-transition);
+	}
+
+	.skill-category:hover {
+		background: rgba(255, 255, 255, 0.08);
+		border-color: var(--accent-regular);
+		transform: translateX(10px) translateY(-3px);
+		box-shadow: 0 6px 25px rgba(102, 126, 234, 0.3), 0 0 40px rgba(102, 126, 234, 0.1);
+	}
+
+	.skill-category:hover::before {
+		opacity: 1;
+	}
+
+	.category-label {
+		font-size: var(--text-sm);
+		font-weight: 700;
+		color: var(--gray-200);
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		margin-bottom: 0.5rem;
+		position: relative;
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.category-label::before {
+		content: '▸';
+		font-size: 0.8em;
+		color: var(--accent-regular);
+		opacity: 0;
+		transform: translateX(-10px);
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.category-label::after {
+		content: '';
+		position: absolute;
+		bottom: -4px;
+		left: 0;
+		width: 0;
+		height: 2px;
+		background: var(--gradient-accent);
+		transition: width 0.3s ease;
+	}
+
+	.skill-category:hover .category-label {
+		color: var(--accent-regular);
+		transform: translateX(5px);
+	}
+
+	.skill-category:hover .category-label::before {
+		opacity: 1;
+		transform: translateX(0);
+	}
+
+	.skill-category:hover .category-label::after {
+		width: 100%;
+	}
+
+	.tech-badges {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.625rem;
+		align-items: center;
+		position: relative;
+		z-index: 1;
+	}
+
+	.tech-badge {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.5rem 1rem;
+		background: var(--gradient-subtle);
+		border: 1px solid var(--gray-800);
+		border-radius: var(--radius-full);
+		font-size: var(--text-sm);
+		font-weight: 600;
+		color: var(--gray-200);
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		position: relative;
+		overflow: hidden;
+		cursor: default;
+		opacity: 0;
+		animation: badge-fade-in 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
+		text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+		min-width: fit-content;
+		white-space: nowrap;
+		z-index: 1;
+	}
+
+	.tech-badge::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: var(--gradient-accent);
+		opacity: 0;
+		transition: opacity 0.3s ease;
+		z-index: -1;
+		pointer-events: none;
+	}
+
+	.tech-badge:nth-child(1) { animation-delay: 0.1s; }
+	.tech-badge:nth-child(2) { animation-delay: 0.2s; }
+	.tech-badge:nth-child(3) { animation-delay: 0.3s; }
+	.tech-badge:nth-child(4) { animation-delay: 0.4s; }
+	.tech-badge:nth-child(5) { animation-delay: 0.5s; }
+
+	@keyframes badge-fade-in {
+		from {
+			opacity: 0;
+			transform: translateY(10px) scale(0.9);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0) scale(1);
+		}
+	}
+
+	@keyframes badge-bounce {
+		0%, 100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(-8px);
+		}
+	}
+
+	@keyframes ripple {
+		to {
+			width: 200px;
+			height: 200px;
+			opacity: 0;
+		}
+	}
+
+	.tech-badge:hover {
+		transform: translateY(-4px) scale(1.1);
+		border-color: var(--accent-regular);
+		color: var(--accent-text-over);
+		box-shadow: var(--shadow-lg), 0 0 25px rgba(102, 126, 234, 0.5);
+		background: var(--gradient-accent);
+		text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+		z-index: 10;
+	}
+
+	.tech-badge:hover::before {
+		opacity: 0.3;
 	}
 
 	@media (min-width: 50em) {
-		.box {
-			border-radius: 1.5rem;
-			padding: 2.5rem;
+		.skills-modern {
+			gap: 2.5rem;
 		}
 
-		.skills {
-			display: grid;
-			grid-template-columns: repeat(3, 1fr);
-			gap: 5rem;
+		.skills-title {
+			font-size: var(--text-3xl);
 		}
 
-		.skills h2 {
+		.skills-subtitle {
+			font-size: var(--text-lg);
+		}
+
+		.skills-grid {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 1.75rem;
+		}
+
+		.skill-card {
+			padding: 2rem;
+		}
+
+		.skill-card-header h3 {
 			font-size: var(--text-2xl);
+		}
+
+		.skills-image-container {
+			padding: 2rem;
+		}
+
+		.skills-image {
+			max-width: 900px;
+		}
+	}
+
+	@media (min-width: 80em) {
+		.skills-image {
+			max-width: 1100px;
+		}
+
+		.skills-grid {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 2rem;
+		}
+	}
+
+	@media (min-width: 100em) {
+		.skills-grid {
+			grid-template-columns: repeat(4, 1fr);
 		}
 	}
 </style>
+
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		// Mouse tracking for skill cards with enhanced effects
+		const skillCards = document.querySelectorAll('.skill-card');
+		skillCards.forEach(card => {
+			card.addEventListener('mousemove', (e) => {
+				const rect = card.getBoundingClientRect();
+				const x = ((e.clientX - rect.left) / rect.width) * 100;
+				const y = ((e.clientY - rect.top) / rect.height) * 100;
+				card.style.setProperty('--mouse-x', `${x}%`);
+				card.style.setProperty('--mouse-y', `${y}%`);
+			});
+
+			card.addEventListener('mouseleave', () => {
+				card.style.setProperty('--mouse-x', '50%');
+				card.style.setProperty('--mouse-y', '50%');
+			});
+		});
+
+		// Stagger animation for badges on card hover
+		skillCards.forEach(card => {
+			card.addEventListener('mouseenter', () => {
+				const badges = card.querySelectorAll('.tech-badge');
+				badges.forEach((badge, index) => {
+					setTimeout(() => {
+						badge.style.animation = 'badge-bounce 0.5s ease-out';
+						setTimeout(() => {
+							badge.style.animation = '';
+						}, 500);
+					}, index * 30);
+				});
+			});
+		});
+
+
+		// Intersection Observer for scroll animations
+		const observerOptions = {
+			threshold: 0.2,
+			rootMargin: '0px 0px -50px 0px'
+		};
+
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					entry.target.style.animationPlayState = 'running';
+				}
+			});
+		}, observerOptions);
+
+		skillCards.forEach(card => observer.observe(card));
+	});
+</script>

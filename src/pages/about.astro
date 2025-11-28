@@ -1,45 +1,115 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
 import ContactCTA from '../components/ContactCTA.astro';
 import Hero from '../components/Hero.astro';
+import Icon from '../components/Icon.astro';
 ---
 
-<BaseLayout title="About | Mehmet Alkaya" description="About Mehmet Alkaya Lorem Ipsum">
-	<div class="stack gap-20">
-		<main class="wrapper about">
-			<Hero
-				title=" À propos de moi"
-				tagline="Merci de votre visite. Lisez ci-dessous pour en savoir plus sur moi et mon parcours."
-			>
-				<img
-					width="1553"
-					height="873"
-					src="/assets/aaa.png"
-					alt="Mehmet Alkaya at work with a colleague"
-				/>
-			</Hero>
+<BaseLayout title="À propos | Mehmet Alkaya" description="Découvrez le parcours et les compétences de Mehmet Alkaya, étudiant en 3ème année à Epitech, spécialisé en IA, Cloud et développement Full-Stack">
+	<div class="about-page">
+		<!-- Animated Background -->
+		<div class="animated-background-about">
+			<div class="gradient-orb-about orb-1"></div>
+			<div class="gradient-orb-about orb-2"></div>
+		</div>
 
-			<section>
-				<h2 class="section-title">Présentation de Mehmet</h2>
-				<div class="content">
+		<!-- Hero Section -->
+		<section class="about-hero scroll-reveal">
+			<div class="wrapper">
+				<div class="about-hero-content">
+					<div class="about-hero-text">
+						<div class="about-badge">
+							<Icon icon="rocket-launch" size="1.2em" />
+							<span>3ᵉ année Epitech</span>
+						</div>
+						<Hero
+							title="À propos de moi"
+							tagline="Développeur passionné par l'innovation technologique et les solutions intelligentes"
+							align="start"
+						/>
+					</div>
+					<div class="about-hero-image">
+						<div class="image-wrapper">
+							<img
+								width="1553"
+								height="873"
+								src="/assets/aaa.png"
+								alt="Mehmet Alkaya au travail avec un collègue"
+								class="about-image"
+							/>
+							<div class="image-overlay"></div>
+							<div class="image-glow-about"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Main Content -->
+		<main class="wrapper about-main">
+			<!-- Introduction Card -->
+			<section class="about-card intro-card scroll-reveal" style="--delay: 0.1s">
+				<div class="card-icon">
+					<Icon icon="rocket-launch" color="var(--accent-regular)" size="2.5rem" gradient />
+				</div>
+				<h2 class="card-title">Mon parcours</h2>
+				<div class="card-content">
 					<p>
-						Actuellement étudiant en deuxième année à Epitech Digital School, je suis passionné par le monde de la technologie et du développement numérique. Mon parcours à Epitech m’a permis d’acquérir des compétences solides en programmation et en ingénierie logicielle, tout en explorant divers aspects du digital.
-					</p>
-						Au cours de ma formation, j'ai eu l'opportunité de travailler sur plusieurs projets innovants, notamment en langage C, où j'ai développé des applications et des jeux qui m'ont permis de comprendre les fondamentaux de la programmation et de renforcer ma créativité. Ces projets, tels que la création d’un mini-shell et d’un jeu de bataille navale, m'ont appris à collaborer efficacement au sein d'équipes et à relever des défis techniques.
+						Actuellement en <strong>3ᵉ année à Epitech</strong>, je suis passionné par le monde de la technologie et du développement numérique. Mon parcours à Epitech m'a permis d'acquérir des compétences solides en programmation et en ingénierie logicielle, tout en explorant divers aspects du digital.
 					</p>
 					<p>
-						Ma passion pour le développement ne se limite pas à la programmation. Je m'intéresse également à des domaines comme l’intelligence artificielle, la cybersécurité et le design d’interface utilisateur, car je crois que ces compétences sont essentielles pour devenir un expert polyvalent dans le secteur technologique. Grâce à Epitech, j'ai pu participer à des ateliers pratiques, des hackathons et des projets collaboratifs qui m'ont permis d'appliquer mes connaissances dans des situations réelles.
-
-En dehors des études, je suis toujours à la recherche de nouvelles opportunités pour apprendre et grandir. Que ce soit à travers des stages, des projets personnels ou des contributions à des communautés tech, je suis motivé par l'idée de toujours me perfectionner. Je crois fermement en l'importance de l’entraide et du partage des connaissances, et je m’efforce de soutenir mes camarades dans leur apprentissage.
-
-En résumé, mon expérience à Epitech Digital School est un véritable tremplin vers une carrière réussie dans le domaine de la technologie. Je suis impatient de continuer à développer mes compétences, d'explorer de nouveaux horizons et de contribuer à des projets qui auront un impact positif dans le monde numérique.
-
-
+						Au cours de ma formation, j'ai eu l'opportunité de travailler sur plusieurs projets innovants, notamment en langage C, où j'ai développé des applications et des jeux qui m'ont permis de comprendre les fondamentaux de la programmation et de renforcer ma créativité. Ces projets, tels que la création d'un mini-shell et d'un jeu de bataille navale, m'ont appris à collaborer efficacement au sein d'équipes et à relever des défis techniques.
 					</p>
 				</div>
 			</section>
 
+			<!-- Skills & Interests -->
+			<section class="about-card skills-card scroll-reveal" style="--delay: 0.2s">
+				<div class="card-icon">
+					<Icon icon="strategy" color="var(--accent-regular)" size="2.5rem" gradient />
+				</div>
+				<h2 class="card-title">Domaines d'expertise</h2>
+				<div class="card-content">
+					<p>
+						Ma passion pour le développement ne se limite pas à la programmation. Je m'intéresse également à des domaines comme <strong>l'intelligence artificielle</strong>, <strong>la cybersécurité</strong> et <strong>le design d'interface utilisateur</strong>, car je crois que ces compétences sont essentielles pour devenir un expert polyvalent dans le secteur technologique.
+					</p>
+					<p>
+						Grâce à Epitech, j'ai pu participer à des ateliers pratiques, des hackathons et des projets collaboratifs qui m'ont permis d'appliquer mes connaissances dans des situations réelles et de développer une approche pragmatique de la résolution de problèmes.
+					</p>
+				</div>
+			</section>
+
+			<!-- Philosophy -->
+			<section class="about-card philosophy-card scroll-reveal" style="--delay: 0.3s">
+				<div class="card-icon">
+					<Icon icon="heart" color="var(--accent-regular)" size="2.5rem" gradient />
+				</div>
+				<h2 class="card-title">Ma philosophie</h2>
+				<div class="card-content">
+					<p>
+						En dehors des études, je suis toujours à la recherche de nouvelles opportunités pour apprendre et grandir. Que ce soit à travers des stages, des projets personnels ou des contributions à des communautés tech, je suis motivé par l'idée de toujours me perfectionner.
+					</p>
+					<p>
+						Je crois fermement en l'importance de <strong>l'entraide</strong> et du <strong>partage des connaissances</strong>, et je m'efforce de soutenir mes camarades dans leur apprentissage. Cette approche collaborative me permet non seulement d'aider les autres, mais aussi de continuer à apprendre et à évoluer.
+					</p>
+				</div>
+			</section>
+
+			<!-- Vision -->
+			<section class="about-card vision-card highlight scroll-reveal" style="--delay: 0.4s">
+				<div class="card-icon">
+					<Icon icon="trophy" color="var(--accent-regular)" size="2.5rem" gradient />
+				</div>
+				<h2 class="card-title">Ma vision</h2>
+				<div class="card-content">
+					<p>
+						Mon expérience à Epitech est un véritable tremplin vers une carrière réussie dans le domaine de la technologie. Je suis impatient de continuer à développer mes compétences, d'explorer de nouveaux horizons et de contribuer à des projets qui auront un <strong>impact positif</strong> dans le monde numérique.
+					</p>
+					<p>
+						Mon objectif est de bâtir des outils intelligents qui automatisent, analysent et améliorent la performance des entreprises, tout en restant accessible et centré sur l'utilisateur.
+					</p>
+				</div>
+			</section>
 		</main>
 
 		<ContactCTA />
@@ -47,59 +117,494 @@ En résumé, mon expérience à Epitech Digital School est un véritable trempli
 </BaseLayout>
 
 <style>
-	.about {
+	.about-page {
 		display: flex;
 		flex-direction: column;
-		gap: 3.5rem;
+		gap: 0;
+		position: relative;
+		overflow-x: hidden;
+		min-height: 100vh;
 	}
 
-	img {
-		margin-top: 1.5rem;
-		border-radius: 1.5rem;
-		box-shadow: var(--shadow-md);
+	/* Animated Background */
+	.animated-background-about {
+		position: fixed;
+		inset: 0;
+		pointer-events: none;
+		z-index: 0;
+		overflow: hidden;
 	}
 
-	section {
-		display: flex;
-		flex-direction: column;
-		gap: 0.5rem;
+	.gradient-orb-about {
+		position: absolute;
+		border-radius: 50%;
+		filter: blur(100px);
+		opacity: 0.3;
+		animation: float-about 20s ease-in-out infinite;
+	}
+
+	.orb-1 {
+		width: 600px;
+		height: 600px;
+		background: var(--gradient-accent);
+		top: -200px;
+		right: -200px;
+		animation-delay: 0s;
+	}
+
+	.orb-2 {
+		width: 500px;
+		height: 500px;
+		background: linear-gradient(135deg, #f093fb 0%, #4facfe 100%);
+		bottom: -150px;
+		left: -150px;
+		animation-delay: -10s;
+	}
+
+	@keyframes float-about {
+		0%, 100% {
+			transform: translate(0, 0) scale(1);
+		}
+		50% {
+			transform: translate(30px, -30px) scale(1.1);
+		}
+	}
+
+	/* ====================================================== */
+	/* Hero Section */
+	/* ====================================================== */
+
+	.about-hero {
+		padding: 2.5rem 0 3rem;
+		position: relative;
+		overflow: hidden;
+		z-index: 1;
+	}
+
+	.about-hero::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: radial-gradient(ellipse at top, var(--accent-overlay) 0%, transparent 70%);
+		pointer-events: none;
+		z-index: 0;
+	}
+
+	.about-badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.75rem;
+		padding: 0.75rem 1.5rem;
+		background: var(--gradient-subtle);
+		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
+		border: 1px solid var(--gray-800);
+		border-radius: var(--radius-full);
+		font-size: var(--text-sm);
 		color: var(--gray-200);
+		font-weight: 600;
+		width: fit-content;
+		margin-bottom: 1.5rem;
+		box-shadow: var(--shadow-md);
+		transition: all var(--theme-transition);
 	}
 
-	.section-title {
-		grid-column-start: 1;
-		font-size: var(--text-xl);
-		color: var(--gray-0);
+	.about-badge:hover {
+		transform: translateY(-3px);
+		box-shadow: var(--shadow-lg);
+		border-color: var(--accent-regular);
 	}
 
-	.content {
-		grid-column: 2 / 4;
+	.about-badge :global(svg) {
+		color: var(--accent-regular);
+		animation: icon-rotate-slow 3s linear infinite;
 	}
 
-	.content :global(a) {
-		text-decoration: 1px solid underline transparent;
-		text-underline-offset: 0.25em;
-		transition: text-decoration-color var(--theme-transition);
+	@keyframes icon-rotate-slow {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
 	}
 
-	.content :global(a:hover),
-	.content :global(a:focus) {
-		text-decoration-color: currentColor;
+	.about-hero-content {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2rem;
+		align-items: center;
+		position: relative;
+		z-index: 1;
+	}
+
+	.about-hero-text {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.about-hero-image {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+	}
+
+	.about-hero-image::before {
+		content: '';
+		position: absolute;
+		inset: -50px;
+		background: var(--gradient-accent);
+		border-radius: var(--radius-2xl);
+		opacity: 0.2;
+		filter: blur(60px);
+		z-index: 0;
+		animation: image-aura 4s ease-in-out infinite;
+	}
+
+	@keyframes image-aura {
+		0%, 100% {
+			opacity: 0.2;
+			transform: scale(1);
+		}
+		50% {
+			opacity: 0.4;
+			transform: scale(1.1);
+		}
+	}
+
+	.image-wrapper {
+		position: relative;
+		width: 100%;
+		max-width: 600px;
+		border-radius: var(--radius-xl);
+		overflow: hidden;
+		box-shadow: var(--shadow-lg);
+	}
+
+	.about-image {
+		width: 100%;
+		height: auto;
+		display: block;
+		transition: transform var(--transition-slow);
+	}
+
+	.image-overlay {
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.1) 100%);
+		pointer-events: none;
+		z-index: 2;
+	}
+
+	.image-glow-about {
+		position: absolute;
+		inset: -30px;
+		background: var(--gradient-accent);
+		border-radius: var(--radius-xl);
+		opacity: 0.3;
+		filter: blur(40px);
+		z-index: 1;
+		animation: glow-pulse-about 3s ease-in-out infinite;
+	}
+
+	@keyframes glow-pulse-about {
+		0%, 100% {
+			opacity: 0.3;
+			transform: scale(1);
+		}
+		50% {
+			opacity: 0.5;
+			transform: scale(1.05);
+		}
+	}
+
+	.image-wrapper:hover .about-image {
+		transform: scale(1.05) rotate(1deg);
+	}
+
+	.image-wrapper:hover .image-glow-about {
+		opacity: 0.6;
 	}
 
 	@media (min-width: 50em) {
-		.about {
-			display: grid;
-			grid-template-columns: 1fr 60% 1fr;
+		.about-hero {
+			padding: 3.5rem 0 4rem;
 		}
 
-		.about > :global(:first-child) {
-			grid-column-start: 2;
-		}
-
-		section {
-			display: contents;
-			font-size: var(--text-lg);
+		.about-hero-content {
+			grid-template-columns: 1fr 1fr;
+			gap: 3rem;
 		}
 	}
+
+	/* ====================================================== */
+	/* Main Content */
+	/* ====================================================== */
+
+	.about-main {
+		padding: 3rem 0 4rem;
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+	}
+
+	.about-card {
+		background: var(--gradient-card);
+		border: 1px solid var(--gray-800);
+		border-radius: var(--radius-xl);
+		padding: 2rem;
+		box-shadow: var(--shadow-md);
+		transition: all var(--theme-transition);
+		position: relative;
+		overflow: hidden;
+		opacity: 0;
+		transform: translateY(50px) scale(0.95);
+		animation: card-appear 0.8s ease-out forwards;
+		animation-delay: var(--delay, 0s);
+	}
+
+	@keyframes card-appear {
+		to {
+			opacity: 1;
+			transform: translateY(0) scale(1);
+		}
+	}
+
+	.about-card::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 4px;
+		background: var(--gradient-accent);
+		opacity: 0;
+		transition: opacity var(--theme-transition);
+		box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+	}
+
+	.about-card::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+		opacity: 0;
+		transition: opacity var(--theme-transition);
+		pointer-events: none;
+		z-index: 0;
+	}
+
+	.about-card:hover {
+		transform: translateY(-8px) scale(1.02);
+		box-shadow: var(--shadow-xl), var(--shadow-glow);
+		border-color: var(--accent-regular);
+	}
+
+	.about-card:hover::before {
+		opacity: 1;
+		box-shadow: 0 0 30px rgba(102, 126, 234, 0.8);
+	}
+
+	.about-card:hover::after {
+		opacity: 1;
+	}
+
+	.card-icon,
+	.card-title,
+	.card-content {
+		position: relative;
+		z-index: 1;
+	}
+
+	.about-card.highlight {
+		background: var(--gradient-subtle);
+		border-color: var(--accent-regular);
+	}
+
+	.about-card.highlight::before {
+		opacity: 1;
+	}
+
+	.card-icon {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		margin-bottom: 1rem;
+		position: relative;
+		width: fit-content;
+	}
+
+	.card-icon::before {
+		content: '';
+		position: absolute;
+		inset: -10px;
+		background: var(--gradient-accent);
+		border-radius: var(--radius-full);
+		opacity: 0;
+		filter: blur(15px);
+		transition: opacity var(--theme-transition);
+		z-index: -1;
+	}
+
+	.about-card:hover .card-icon::before {
+		opacity: 0.4;
+	}
+
+	.card-title {
+		font-size: var(--text-2xl);
+		color: var(--gray-0);
+		margin: 0 0 1rem 0;
+		font-weight: 700;
+		background: linear-gradient(135deg, var(--gray-0) 0%, var(--accent-regular) 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		background-size: 200% 200%;
+		animation: title-gradient 5s ease infinite;
+		position: relative;
+		display: inline-block;
+	}
+
+	.card-title::after {
+		content: '';
+		position: absolute;
+		bottom: 0.2em;
+		left: 0;
+		width: 100%;
+		height: 3px;
+		background: var(--gradient-accent);
+		opacity: 0.3;
+		border-radius: var(--radius-sm);
+		z-index: -1;
+		animation: underline-pulse 2s ease-in-out infinite;
+	}
+
+	@keyframes underline-pulse {
+		0%, 100% {
+			opacity: 0.3;
+			transform: scaleX(1);
+		}
+		50% {
+			opacity: 0.6;
+			transform: scaleX(1.05);
+		}
+	}
+
+	.card-content {
+		color: var(--gray-300);
+		font-size: var(--text-sm);
+		line-height: 1.7;
+	}
+
+	.card-content p {
+		margin: 0 0 1rem 0;
+	}
+
+	.card-content p:last-child {
+		margin-bottom: 0;
+	}
+
+	.card-content strong {
+		color: var(--gray-100);
+		font-weight: 600;
+		background: linear-gradient(135deg, var(--gray-100), var(--accent-regular));
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		position: relative;
+		transition: all var(--theme-transition);
+	}
+
+	.card-content strong:hover {
+		transform: scale(1.05);
+		filter: drop-shadow(0 0 8px rgba(102, 126, 234, 0.5));
+	}
+
+	.card-content :global(a) {
+		color: var(--accent-regular);
+		text-decoration: none;
+		transition: color var(--theme-transition);
+	}
+
+	.card-content :global(a:hover),
+	.card-content :global(a:focus) {
+		color: var(--accent-dark);
+		text-decoration: underline;
+		text-underline-offset: 0.25em;
+	}
+
+	@media (min-width: 50em) {
+		.about-main {
+			padding: 4rem 0 5rem;
+			gap: 2.5rem;
+		}
+
+		.about-card {
+			padding: 2.5rem;
+		}
+
+		.card-title {
+			font-size: var(--text-3xl);
+		}
+
+		.card-content {
+			font-size: var(--text-base);
+		}
+	}
+
+	@media (min-width: 80em) {
+		.about-main {
+			max-width: 900px;
+			margin-inline: auto;
+		}
+	}
+
+	.scroll-reveal {
+		opacity: 0;
+		transform: translateY(50px);
+		transition: all 0.8s ease-out;
+		transition-delay: var(--delay, 0s);
+	}
+
+	.scroll-reveal.visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
 </style>
+
+<script>
+	// Scroll reveal animation
+	const observerOptions = {
+		threshold: 0.1,
+		rootMargin: '0px 0px -100px 0px'
+	};
+
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				entry.target.classList.add('visible');
+			}
+		});
+	}, observerOptions);
+
+	document.addEventListener('DOMContentLoaded', () => {
+		const elements = document.querySelectorAll('.scroll-reveal');
+		elements.forEach(el => observer.observe(el));
+
+		// Mouse tracking for cards
+		const cards = document.querySelectorAll('.about-card');
+		cards.forEach(card => {
+			card.addEventListener('mousemove', (e) => {
+				const rect = card.getBoundingClientRect();
+				const x = ((e.clientX - rect.left) / rect.width) * 100;
+				const y = ((e.clientY - rect.top) / rect.height) * 100;
+				card.style.setProperty('--mouse-x', `${x}%`);
+				card.style.setProperty('--mouse-y', `${y}%`);
+			});
+		});
+	});
+</script>

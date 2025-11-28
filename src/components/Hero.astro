@@ -8,9 +8,14 @@ interface Props {
 const { align = 'center', tagline, title } = Astro.props;
 ---
 
-<div class:list={['hero stack gap-4', align]}>
-	<div class="stack gap-2">
-		<h1 class="title">{title}</h1>
+<div class:list={['hero stack gap-6', align]}>
+	<div class="hero-content stack gap-4">
+		<div class="title-wrapper">
+			<h1 class="title">
+				<span class="title-text">{title}</span>
+				<span class="title-accent"></span>
+			</h1>
+		</div>
 		{tagline && <p class="tagline">{tagline}</p>}
 	</div>
 	<slot />
@@ -20,35 +25,136 @@ const { align = 'center', tagline, title } = Astro.props;
 	.hero {
 		font-size: var(--text-lg);
 		text-align: center;
+		position: relative;
 	}
 
-	.title,
-	.tagline {
-		max-width: 37ch;
-		margin-inline: auto;
+	.hero-content {
+		position: relative;
+		z-index: 1;
+	}
+
+	.title-wrapper {
+		position: relative;
+		display: inline-block;
+		transform-style: preserve-3d;
+		transition: transform var(--theme-transition);
+	}
+
+	.title-wrapper:hover {
+		transform: translateY(-5px) scale(1.02);
 	}
 
 	.title {
 		font-size: var(--text-3xl);
 		color: var(--gray-0);
+		position: relative;
+		display: inline-block;
+		margin: 0;
+		font-weight: 800;
+		letter-spacing: -0.03em;
+		line-height: 1.1;
+		text-shadow: 0 0 30px rgba(102, 126, 234, 0.3);
+		animation: title-glow 3s ease-in-out infinite;
+	}
+
+	@keyframes title-glow {
+		0%, 100% {
+			text-shadow: 0 0 30px rgba(102, 126, 234, 0.3);
+		}
+		50% {
+			text-shadow: 0 0 50px rgba(102, 126, 234, 0.6), 0 0 80px rgba(102, 126, 234, 0.3);
+		}
+	}
+
+	.title-text {
+		position: relative;
+		z-index: 2;
+		background: linear-gradient(135deg, var(--gray-0) 0%, var(--gray-100) 50%, var(--accent-regular) 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		background-size: 200% 200%;
+		animation: gradient-shift 4s ease infinite;
+	}
+
+	@keyframes gradient-shift {
+		0%, 100% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+	}
+
+	.title-accent {
+		position: absolute;
+		bottom: 0.2em;
+		left: 0;
+		right: 0;
+		height: 0.4em;
+		background: var(--gradient-accent);
+		opacity: 0.4;
+		border-radius: var(--radius-sm);
+		z-index: 1;
+		transform: translateY(0) scaleX(1);
+		transition: transform var(--theme-transition), opacity var(--theme-transition);
+		animation: underline-glow 3s ease-in-out infinite;
+		box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+	}
+
+	@keyframes underline-glow {
+		0%, 100% {
+			opacity: 0.4;
+			box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+		}
+		50% {
+			opacity: 0.6;
+			box-shadow: 0 0 30px rgba(102, 126, 234, 0.8);
+		}
+	}
+
+	.title-wrapper:hover .title-accent {
+		opacity: 0.7;
+		transform: translateY(-2px) scaleX(1.05);
+		box-shadow: 0 0 40px rgba(102, 126, 234, 1);
+	}
+
+	.tagline {
+		font-size: var(--text-base);
+		color: var(--gray-300);
+		max-width: 50ch;
+		margin-inline: auto;
+		font-weight: 400;
+		line-height: 1.6;
+	}
+
+	.start {
+		text-align: start;
+	}
+
+	.start .title,
+	.start .tagline {
+		margin-inline: unset;
 	}
 
 	@media (min-width: 50em) {
 		.hero {
-			font-size: var(--text-xl);
-		}
-
-		.start {
-			text-align: start;
-		}
-
-		.start .title,
-		.start .tagline {
-			margin-inline: unset;
+			font-size: var(--text-lg);
 		}
 
 		.title {
 			font-size: var(--text-5xl);
+		}
+
+		.tagline {
+			font-size: var(--text-lg);
+			max-width: 60ch;
+		}
+	}
+
+	@media (min-width: 80em) {
+		.title {
+			font-size: clamp(2.5rem, 6vw, 4rem);
 		}
 	}
 </style>
